@@ -24,7 +24,6 @@ public class MainActivity extends ActionBarActivity {
 	private BluetoothAdapter mBluetoothAdapter;
 	private final int REQUEST_ENABLE_BT = 1;
 	ListView listView;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -99,6 +98,8 @@ public class MainActivity extends ActionBarActivity {
 		// UUID 설정 (SPP)
 		UUID SPP_UUID = java.util.UUID
 				.fromString("00001101-0000-1000-8000-00805F9B34FB");
+		UUID HID_UUID = java.util.UUID
+				.fromString("00000011-0000-1000-8000-00805F9B34FB");
 		/*
 		 * 클릭해서 가져온 Device의 String 값과 페어링 된 것이 일치하는지 한번 더 확인 후
 		 * BluetoothDevice 객체로 target저장
@@ -115,7 +116,7 @@ public class MainActivity extends ActionBarActivity {
 		
 		// If the device was not found, toast an error and return
 		if(targetDevice==null){
-			Toast.makeText(getApplicationContext(), "Cannot found any devices", Toast.LENGTH_SHORT).show();
+			Toast.makeText(getApplicationContext(), "Cannot find any devices", Toast.LENGTH_SHORT).show();
 			return;
 		}
 		
@@ -141,8 +142,9 @@ public class MainActivity extends ActionBarActivity {
 		// Write the data by using OutputStreamWriter
 		try {
 			OutputStreamWriter outputStreamWriter = new OutputStreamWriter(mBluetoothSocket.getOutputStream());
-			outputStreamWriter.write("Ahn Seung Hwan Byungsin!/r/n");
+			outputStreamWriter.write("hello");
 			outputStreamWriter.flush();
+			Toast.makeText(this, "Write", Toast.LENGTH_SHORT).show();
 		} catch (IOException e) {
 			Toast.makeText(this, "Unable to send message to the device", Toast.LENGTH_SHORT).show();
 			e.printStackTrace();
@@ -150,12 +152,10 @@ public class MainActivity extends ActionBarActivity {
 		
 		try {
 			mBluetoothSocket.close();
-			Toast.makeText(this, "Success to send message to the device", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, "Close", Toast.LENGTH_SHORT).show();
 		} catch (IOException e) {
 			Toast.makeText(this, "Fail to close the connection to device", Toast.LENGTH_SHORT).show();
 			e.printStackTrace();
 		}
-		
 	}
-
 }
