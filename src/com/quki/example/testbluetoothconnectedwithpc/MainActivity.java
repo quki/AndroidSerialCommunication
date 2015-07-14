@@ -64,6 +64,22 @@ public class MainActivity extends ActionBarActivity {
 		super.onPostCreate(savedInstanceState);
 	}
 
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		
+		if(requestCode == REQUEST_ENABLE_BT)
+			if(resultCode == RESULT_OK)
+				listPairedDevices();
+			else{
+				Toast.makeText(this, "Unable to connect Bluetooth module", Toast.LENGTH_SHORT).show();
+				finish();
+			}
+		
+		
+		
+		super.onActivityResult(requestCode, resultCode, data);
+	}
+
 	private void listPairedDevices() {
 
 		// get the paired devices
