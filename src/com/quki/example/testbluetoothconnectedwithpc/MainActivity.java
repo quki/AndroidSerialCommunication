@@ -11,7 +11,7 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -19,7 +19,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
 	private BluetoothAdapter mBluetoothAdapter;
 	private final int REQUEST_ENABLE_BT = 1;
@@ -114,8 +114,6 @@ public class MainActivity extends ActionBarActivity {
 		// UUID 설정 (SPP)
 		UUID SPP_UUID = java.util.UUID
 				.fromString("00001101-0000-1000-8000-00805F9B34FB");
-		UUID HID_UUID = java.util.UUID
-				.fromString("00000011-0000-1000-8000-00805F9B34FB");
 		/*
 		 * 클릭해서 가져온 Device의 String 값과 페어링 된 것이 일치하는지 한번 더 확인 후
 		 * BluetoothDevice 객체로 target저장
