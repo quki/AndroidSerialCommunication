@@ -1,3 +1,2 @@
-# BluetoothExampleToPC
-Example of Bluetooth that is used to connect Android and PC.
-</br>Used Serial Port Profile(SPP).
+# Android Serial Communication Example
+Connecting Android and PC using Serial Port Profile(SPP).
